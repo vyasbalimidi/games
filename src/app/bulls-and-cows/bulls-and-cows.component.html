@@ -1,8 +1,33 @@
-<button type="button" class="btn btn-primary m-2" (click)="increment($event)">0</button>
-<button type="button" class="btn btn-primary m-2" (click)="increment($event)">0</button>
-<button type="button" class="btn btn-primary m-2" (click)="increment($event)">0</button>
-<button type="button" class="btn btn-primary m-2" (click)="increment($event)">0</button>
+<button type="button" class="btn btn-primary m-2" (click)="increment(0)">{{ guess[0] }}</button>
+<button type="button" class="btn btn-primary m-2" (click)="increment(1)">{{ guess[1] }}</button>
+<button type="button" class="btn btn-primary m-2" (click)="increment(2)">{{ guess[2] }}</button>
+<button type="button" class="btn btn-primary m-2" (click)="increment(3)">{{ guess[3] }}</button>
 
-<button type="button" class="btn btn-success m-3" (click)="guess()">I guess so!</button>
+<button type="button" class="btn btn-success m-3" (click)="check()">I guess so!</button>
+<button type="button" class="btn btn-danger m-3" (click)="startNewGame()">New Game</button>
 
-<p>{{ message }}</p>
+<div *ngIf="showDuplicates" class="alert alert-danger" role="alert">
+    Duplicates are present
+</div>
+
+<ul *ngFor="let trail of trails" class="list-group">
+    <li class="list-group-item">
+        <div class="btn-group mr-2" role="group">
+            <button type="button" class="btn btn-secondary" disabled>{{ trail.guess[0] }}</button>
+            <button type="button" class="btn btn-secondary" disabled>{{ trail.guess[1] }}</button>
+            <button type="button" class="btn btn-secondary" disabled>{{ trail.guess[2] }}</button>
+            <button type="button" class="btn btn-secondary" disabled>{{ trail.guess[3] }}</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+            <img class="img-responsive" src="assets/bull.png">
+            <button type="button" class="btn btn-info" disabled>{{ trail.bulls }}</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+            <img class="img-responsive" src="assets/cow.png">
+            <button type="button" class="btn btn-info" disabled>{{ trail.cows }}</button>
+        </div>
+        <div *ngIf="trail.bulls == 4" class="alert alert-success" role="alert">
+            Great! You found it
+        </div>
+    </li>
+</ul>
