@@ -35,10 +35,6 @@ export class BullsAndCowsComponent implements OnInit {
     return nums.slice(0, 4);
   }
 
-  increment(index: number) {
-    this.guess[index] = this.guess[index] == 9 ? 0 : this.guess[index] + 1;
-  }
-
   check() {
     let set = new Set(this.guess);
     this.showDuplicates = set.size != 4;
@@ -65,6 +61,6 @@ export class BullsAndCowsComponent implements OnInit {
     let guessCopy = this.guess.slice(0, this.guess.length);
     let trail = new Trail(guessCopy, bulls, cows);
 
-    this.trails.push(trail);
+    this.trails.unshift(trail);
   }
 }
