@@ -1,4 +1,6 @@
 .bnc-num {
   width: 45px;
   text-align: center;
+  font-size: 1em;
+  font-weight: bold;
 }
