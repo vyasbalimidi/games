@@ -13,7 +13,7 @@ export class BullsAndCowsComponent implements OnInit {
   showDuplicates: boolean;
   trails: Trail[];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.startNewGame();
@@ -62,5 +62,15 @@ export class BullsAndCowsComponent implements OnInit {
     let trail = new Trail(guessCopy, bulls, cows);
 
     this.trails.unshift(trail);
+  }
+
+  validate(event) {
+    if (event.keyCode != 8 && event.target.value.length == 1) {
+      event.preventDefault();
+    }
+  }
+
+  focused(event) {
+    console.log(event)
   }
 }
