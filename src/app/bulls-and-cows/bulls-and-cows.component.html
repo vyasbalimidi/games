@@ -4,38 +4,28 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="col p-2">
-		<input class="bnc-num" type="number" [(ngModel)]="guess[0]" min="0" max="9" pattern="\d*" (keydown)="validate($event)" (focus)="$event.target.select()">
-	</div>
-	<div class="col p-2">
-		<input class="bnc-num" type="number" [(ngModel)]="guess[1]" min="0" max="9" pattern="\d*" (keydown)="validate($event)" (focus)="$event.target.select()">
-	</div>
-	<div class="col p-2">
-		<input class="bnc-num" type="number" [(ngModel)]="guess[2]" min="0" max="9" pattern="\d*" (keydown)="validate($event)" (focus)="$event.target.select()">
-	</div>
-	<div class="col p-2">
-		<input class="bnc-num" type="number" [(ngModel)]="guess[3]" min="0" max="9" pattern="\d*" (keydown)="validate($event)" (focus)="$event.target.select()">
-	</div>
-</div>
+<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[0]" min="0" max="9" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
+<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[1]" min="0" max="9" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
+<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[2]" min="0" max="9" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
+<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[3]" min="0" max="9" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
 
 <div class="row">
 	<div class="col">
-		<button type="button" class="btn btn-success m-3" (click)="check()">I guess so</button>
+		<button type="button" class="btn btn-success m-3" [disabled]="!validNumbers || gameover" (click)="check()"> Guess </button>
 	</div>
 </div>
 
-<div *ngIf="showDuplicates" class="alert alert-danger" role="alert">
+<div *ngIf="hasDuplicates" class="alert alert-danger" role="alert">
 	Duplicates are present
+</div>
+
+<div *ngIf="gameover" class="alert alert-success" role="alert">
+	Awesome! You found it
 </div>
 
 <ul *ngFor="let trail of trails" class="list-group">
 	<li class="list-group-item mb-2">
 		<p class="mb-0">{{ trail.guess[0] }} {{ trail.guess[1] }} {{ trail.guess[2] }} {{ trail.guess[3] }}</p>
 		<p class="mb-0">Bulls: {{ trail.bulls }} & Cows: {{ trail.cows }}</p>
-
-		<div *ngIf="trail.bulls == 4" class="alert alert-success" role="alert">
-			Great! You found it
-		</div>
 	</li>
 </ul>
