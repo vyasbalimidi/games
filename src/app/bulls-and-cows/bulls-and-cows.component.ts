@@ -10,7 +10,10 @@ export class BullsAndCowsComponent implements OnInit {
   secretNumber: number[];
   guess: number[];
 
-  showDuplicates: boolean;
+  validNumbers: boolean;
+  hasDuplicates: boolean;
+  gameover: boolean;
+
   trails: Trail[];
 
   constructor() { }
@@ -23,7 +26,10 @@ export class BullsAndCowsComponent implements OnInit {
     this.secretNumber = this.generateSecretNumber();
     this.guess = [0, 1, 2, 3];
 
-    this.showDuplicates = false;
+    this.validNumbers = true;
+    this.hasDuplicates = false;
+    this.gameover = false;
+
     this.trails = [];
 
     console.log("Secret number: " + this.secretNumber);
@@ -37,9 +43,9 @@ export class BullsAndCowsComponent implements OnInit {
 
   check() {
     let set = new Set(this.guess);
-    this.showDuplicates = set.size != 4;
+    this.hasDuplicates = set.size != 4;
 
-    if (!this.showDuplicates) {
+    if (!this.hasDuplicates) {
       this.calculateBullsAndCows();
     }
   }
@@ -62,15 +68,14 @@ export class BullsAndCowsComponent implements OnInit {
     let trail = new Trail(guessCopy, bulls, cows);
 
     this.trails.unshift(trail);
+    this.gameover = bulls == 4;
   }
-
-  validate(event) {
-    if (event.keyCode != 8 && event.target.value.length == 1) {
-      event.preventDefault();
-    }
-  }
-
-  focused(event) {
-    console.log(event)
+    
+  validate() {
+    this.validNumbers =
+      this.guess[0] != null && this.guess[0] >= 0 && this.guess[0] <= 10 &&
+      this.guess[1] != null && this.guess[1] >= 0 && this.guess[1] <= 10 &&
+      this.guess[2] != null && this.guess[2] >= 0 && this.guess[2] <= 10 &&
+      this.guess[3] != null && this.guess[3] >= 0 && this.guess[3] <= 10;
   }
 }
