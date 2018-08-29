@@ -73,9 +73,9 @@ export class BullsAndCowsComponent implements OnInit {
     
   validate() {
     this.validNumbers =
-      this.guess[0] != null && this.guess[0] >= 0 && this.guess[0] <= 10 &&
-      this.guess[1] != null && this.guess[1] >= 0 && this.guess[1] <= 10 &&
-      this.guess[2] != null && this.guess[2] >= 0 && this.guess[2] <= 10 &&
-      this.guess[3] != null && this.guess[3] >= 0 && this.guess[3] <= 10;
+      this.guess[0] != null && this.guess[0] >= 0 && this.guess[0] <= 9 &&
+      this.guess[1] != null && this.guess[1] >= 0 && this.guess[1] <= 9 &&
+      this.guess[2] != null && this.guess[2] >= 0 && this.guess[2] <= 9 &&
+      this.guess[3] != null && this.guess[3] >= 0 && this.guess[3] <= 9;
   }
 }
