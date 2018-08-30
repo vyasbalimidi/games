@@ -5,10 +5,10 @@
 		</div>
 	</div>
 
-	<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[0]" min="0" max="9" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
-	<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[1]" min="0" max="9" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
-	<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[2]" min="0" max="9" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
-	<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[3]" min="0" max="9" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
+	<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[0]" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
+	<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[1]" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
+	<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[2]" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
+	<input class="m-2 bnc-num" type="number" [(ngModel)]="guess[3]" pattern="\d*" (input)="validate()" (focus)="$event.target.select()">
 
 	<div class="row">
 		<div class="col">
